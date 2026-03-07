@@ -1,12 +1,7 @@
-import { sveltekit } from '@sveltejs/vite-plugin-svelte';
-import { defineConfig } from 'vite';
+import adapter from '@sveltejs/adapter-auto';
 
-export default defineConfig({
-  plugins: [sveltekit()],
-  server: {
-    headers: {
-      'Cross-Origin-Opener-Policy': 'same-origin',
-      'Cross-Origin-Embedder-Policy': 'require-corp',
-    }
+export default {
+  kit: {
+    adapter: adapter()
   }
-});
+};
