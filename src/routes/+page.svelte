@@ -1,4 +1,5 @@
 <script lang="ts">
+  export const ssr = false;
   import { FFmpeg } from '@ffmpeg/ffmpeg';
   import { fetchFile } from '@ffmpeg/util';
   import { onMount } from 'svelte';
