@@ -73,7 +73,7 @@ Chrome or Edge recommended for best performance.
 
 LocalConvert is free and open source. If it saved you time, a small tip means a lot:
 
-- ☕ [Buy me a coffee](https://buymeacoffee.com/gokulraj) — for international supporters
+- ☕ [Buy me a coffee](https://buymeacoffee.com/gokulrajr) — for international supporters
 - 🇮🇳 UPI: `your_upi@bank` — for Indian users (zero fees)
 - ⭐ [Star this repo](https://github.com/Gokul-Raj-R-Coder/local-converter) — free and helps others find it
 
