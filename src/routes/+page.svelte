@@ -1,5 +1,4 @@
 <script lang="ts">
-
   import { FFmpeg } from '@ffmpeg/ffmpeg';
   import { fetchFile } from '@ffmpeg/util';
   import { onMount } from 'svelte';
@@ -309,6 +308,13 @@
           <a href={downloadUrl} download="converted_file.{outputFormat}">
             <button class="download-btn">Download .{outputFormat}</button>
           </a>
+        </div>
+        <div class="donation-card">
+          <span class="donation-text">💛 Found this useful? It's free forever — but a small tip keeps it running.</span>
+          <div class="donation-links">
+            <a href="https://buymeacoffee.com/gokulrajr" target="_blank" rel="noopener" class="donate-btn bmc">☕ Buy me a coffee</a>
+            <a href="gokulrajr992003-1@okaxis" class="donate-btn upi">🇮🇳 UPI</a>
+          </div>
         </div>
       {/if}
     {/if}
@@ -676,6 +682,66 @@
   .download-btn:hover {
     background: #15803d;
     transform: translateY(-1px);
+  }
+
+  /* Donation */
+  .donation-card {
+    margin-top: 10px;
+    background: #0f1520;
+    border: 1px solid #1e2a3a;
+    border-radius: 16px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    animation: slideUp 0.4s ease;
+  }
+
+  .donation-text {
+    font-size: 13px;
+    color: #8892a4;
+    flex: 1;
+    min-width: 180px;
+  }
+
+  .donation-links {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .donate-btn {
+    padding: 7px 14px;
+    border-radius: 8px;
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+
+  .donate-btn.bmc {
+    background: #1e2a3a;
+    border: 1px solid #2d3a4f;
+    color: #e8eaf0;
+  }
+
+  .donate-btn.bmc:hover {
+    background: #2d3a4f;
+    border-color: #63b3ed;
+  }
+
+  .donate-btn.upi {
+    background: rgba(99, 179, 237, 0.1);
+    border: 1px solid rgba(99, 179, 237, 0.25);
+    color: #63b3ed;
+  }
+
+  .donate-btn.upi:hover {
+    background: rgba(99, 179, 237, 0.2);
   }
 
   /* Error */
