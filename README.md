@@ -1,47 +1,155 @@
-# Svelte + TS + Vite
+# ⚡ LocalConvert
 
-This template should help get you started developing with Svelte and TypeScript in Vite.
+![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Built with Svelte](https://img.shields.io/badge/built%20with-Svelte-FF3E00?logo=svelte&logoColor=white)
+![Powered by ffmpeg.wasm](https://img.shields.io/badge/powered%20by-ffmpeg.wasm-007ACC)
+![Zero uploads](https://img.shields.io/badge/uploads-zero-brightgreen)
 
-## Recommended IDE Setup
+**Free, private file conversion — entirely in your browser.**
 
-[VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode).
+> No account. No upload. No file size limits. Your files never leave your device.
 
-## Need an official Svelte framework?
+## 🚀 [Try it now → local-converter-bhwl.vercel.app](https://local-converter-bhwl.vercel.app)
 
-Check out [SvelteKit](https://github.com/sveltejs/kit#readme), which is also powered by Vite. Deploy anywhere with its serverless-first approach and adapt to various platforms, with out of the box support for TypeScript, SCSS, and Less, and easily-added support for mdsvex, GraphQL, PostCSS, Tailwind CSS, and more.
+---
 
-## Technical considerations
+## Why LocalConvert?
 
-**Why use this over SvelteKit?**
+You've probably used CloudConvert, Zamzar, or similar tools and run into this:
 
-- It brings its own routing solution which might not be preferable for some users.
-- It is first and foremost a framework that just happens to use Vite under the hood, not a Vite app.
+| The problem with most converters | LocalConvert |
+|---|---|
+| ❌ Must create an account | ✅ No account needed |
+| ❌ Uploads your file to their server | ✅ File never leaves your device |
+| ❌ 100MB file size limit on free tier | ✅ No size limits |
+| ❌ Slow — wait for upload + processing | ✅ Runs on your own CPU |
+| ❌ Pay for bulk conversions | ✅ Always free |
+| ❌ Your files stored on someone's server | ✅ 100% private |
 
-This template contains as little as possible to get started with Vite + TypeScript + Svelte, while taking into account the developer experience with regards to HMR and intellisense. It demonstrates capabilities on par with the other `create-vite` templates and is a good starting point for beginners dipping their toes into a Vite + Svelte project.
+LocalConvert runs the entire conversion inside your browser using WebAssembly — the same technology that powers browser-based games and desktop-class apps in the browser.
 
-Should you later need the extended capabilities and extensibility provided by SvelteKit, the template has been structured similarly to SvelteKit so that it is easy to migrate.
+---
 
-**Why `global.d.ts` instead of `compilerOptions.types` inside `jsconfig.json` or `tsconfig.json`?**
+## What can it do?
 
-Setting `compilerOptions.types` shuts out all other types not explicitly listed in the configuration. Using triple-slash references keeps the default TypeScript setting of accepting type information from the entire workspace, while also adding `svelte` and `vite/client` type information.
+**Supported output formats:** MP4 · WebM · AVI · MOV · GIF · MP3
 
-**Why include `.vscode/extensions.json`?**
+**Works with most common video and audio inputs:** MP4, MOV, MKV, AVI, WebM, and more.
 
-Other templates indirectly recommend extensions via the README, but this file allows VS Code to prompt the user to install the recommended extension upon opening the project.
+**Extra features:**
+- ✂️ **Trim** — set a start and end time to extract just the clip you need
+- 🎨 **High-quality GIF export** — two-pass palette encoding, no dithering artifacts
+- 📊 **Live progress bar** — see exactly how far along the conversion is
+- 🖱️ **Drag & drop** — drop a file straight onto the page
 
-**Why enable `allowJs` in the TS template?**
+---
 
-While `allowJs: false` would indeed prevent the use of `.js` files in the project, it does not prevent the use of JavaScript syntax in `.svelte` files. In addition, it would force `checkJs: false`, bringing the worst of both worlds: not being able to guarantee the entire codebase is TypeScript, and also having worse typechecking for the existing JavaScript. In addition, there are valid use cases in which a mixed codebase may be relevant.
+## How to use it
 
-**Why is HMR not preserving my local component state?**
+1. Go to **[local-converter-bhwl.vercel.app](https://local-converter-bhwl.vercel.app)**
+2. Drop your file or click Browse
+3. Pick an output format
+4. Optionally set trim start/end times
+5. Click Convert — done
 
-HMR state preservation comes with a number of gotchas! It has been disabled by default in both `svelte-hmr` and `@sveltejs/vite-plugin-svelte` due to its often surprising behavior. You can read the details [here](https://github.com/rixo/svelte-hmr#svelte-hmr).
+No signup, no waiting, no limits.
 
-If you have state that's important to retain within a component, consider creating an external store which would not be replaced by HMR.
+---
 
-```ts
-// store.ts
-// An extremely simple external store
-import { writable } from 'svelte/store'
-export default writable(0)
+## Supported browsers
+
+| Browser | Status |
+|---|---|
+| Chrome / Edge | ✅ Full support |
+| Firefox | ✅ Full support |
+| Safari | ⚠️ May have issues (SharedArrayBuffer restrictions) |
+| Mobile | ⚠️ Works but slow on large files |
+
+Chrome or Edge recommended for best performance.
+
+---
+
+## 💛 Support this project
+
+LocalConvert is free and open source. If it saved you time, a small tip means a lot:
+
+- ☕ [Buy me a coffee](https://buymeacoffee.com/gokulraj) — for international supporters
+- 🇮🇳 UPI: `your_upi@bank` — for Indian users (zero fees)
+- ⭐ [Star this repo](https://github.com/Gokul-Raj-R-Coder/local-converter) — free and helps others find it
+
+---
+
+## For developers
+
+### How it works under the hood
+
+Traditional converters upload your file to a remote server, process it, then send it back. LocalConvert works differently:
+
 ```
+Your file → ffmpeg.wasm (runs inside your browser tab) → Converted file
+                  ↑
+          No server involved
+```
+
+When the page loads, the ffmpeg WebAssembly binary (~30MB) downloads once and is cached by the browser. All subsequent conversions happen entirely on your machine — as fast as your CPU allows.
+
+### Tech stack
+
+| Technology | Purpose |
+|---|---|
+| [Svelte](https://svelte.dev) + TypeScript | Frontend framework |
+| [ffmpeg.wasm](https://github.com/ffmpegwasm/ffmpeg.wasm) | In-browser video/audio processing |
+| [Vite](https://vitejs.dev) | Build tool |
+| [Vercel](https://vercel.com) | Deployment |
+
+### Run locally
+
+```bash
+git clone https://github.com/Gokul-Raj-R-Coder/local-converter.git
+cd local-converter
+npm install
+npm run dev
+```
+
+Open [http://localhost:5173](http://localhost:5173). Requires Node.js 18+.
+
+> The CORS headers required for WebAssembly threading are pre-configured in `vite.config.ts` for local dev and `vercel.json` for production.
+
+### Deploy your own
+
+Add `vercel.json` to your project root:
+
+```json
+{
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "Cross-Origin-Opener-Policy", "value": "same-origin" },
+        { "key": "Cross-Origin-Embedder-Policy", "value": "require-corp" }
+      ]
+    }
+  ]
+}
+```
+
+Then run `vercel` to deploy.
+
+### Known limitations
+
+- Files over ~500MB may crash on low-memory devices
+- ffmpeg.wasm supports a subset of codecs vs desktop ffmpeg — obscure formats may fail
+- Safari restricts SharedArrayBuffer, which can cause slower or failed conversions
+
+### Roadmap
+
+- [ ] Batch conversion (multiple files at once)
+- [ ] Quality slider (control output file size)
+- [ ] Image conversion (HEIC → JPG, AVIF → PNG)
+- [ ] Desktop app via Tauri (no RAM constraint)
+
+---
+
+## License
+
+MIT — free to fork, modify, and deploy your own version.
